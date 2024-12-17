@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced M3U Playlist Manager Pro</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.20.3/video-js.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.20.3/video.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --secondary-color: #1d4ed8;
+            --success-color: #22c55e;
+            --warning-color: #f59e0b;
+            --error-color: #ef4444;
+            --background-color: #f8fafc;
+            --card-background: #ffffff;
+            --text-color: #1e293b;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .flex-container {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .sidebar {
+            width: 300px;
+            flex-shrink: 0;
+        }
+
+        .main-content {
+            flex-grow: 1;
+        }
+
+        .card {
+            background: var(--card-background);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-group {
+            margin-bottom: 1rem;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .input-group input[type="text"],
+        .input-group input[type="file"],
+        .input-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .input-group input[type="text"]:focus,
+        .input-group input[type="file"]:focus,
+        .input-group select:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            justify-content: center;
+            width: 100%;
+            margin-bottom: 0.5rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-success {
+            background-color: var(--success-color);
+            color: white;
+        }
+
+        .btn-success:hover {
+            background-color: #16a34a;
+        }
+
+        .btn-warning {
+            background-color: var(--warning-color);
+            color: white;
+        }
+
+        .btn-warning:hover {
+            background-color: #d97706;
+        }
+
+        .categories {
+            max-height: 400px;
+            overflow-y: auto;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+        }
+
+        .category-item {
+            padding: 0.75rem;
+            border-bottom: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .category-item:hover {
+            background-color: #f1f5f9;
+        }
+
+        .category-item.active {
+            background-color: #e2e8f0;
+        }
+
+        .channels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .channel-card {
+            background: var(--card-background);
+            border-radius: 8px;
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .channel-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .channel-name {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .channel-info {
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+
+        .channel-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .video-player {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 1rem;
+            border-radius: 12px;
+            display: none;
+        }
+
+        .video-player.active {
+            display: block;
+        }
+
+        .close-player {
+            position: absolute;
+            top: -1rem;
+            right: -1rem;
+            background: var(--error-color);
+            color: white;
+            border: none;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .status-badge {
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .status-working {
+            background-color: var(--success-color);
+            color: white;
+        }
+
+        .status-error {
+            background-color: var(--error-color);
+            color: white;
+        }
+
+        .progress-container {
+            margin-top: 1rem;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background-color: var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background-color: var(--primary-color);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .stat-card {
+            background: #f1f5f9;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .playlist-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .filter-container {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .search-box {
+            flex-grow: 1;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: var(--card-background);
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        /* Dark mode styles */
+        body.dark-mode {
+            --background-color: #1a1a1a;
+            --card-background: #2d2d2d;
+            --text-color: #ffffff;
+            --border-color: #404040;
+        }
+
+        @media (max-width: 768px) {
+            .flex-container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+
+            .channels-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Advanced M3U Playlist Manager Pro</h1>
+            <p>Professional IPTV Stream Analysis & Management Tool</p>
+        </div>
+
+        <div class="flex-container">
+            <div class="sidebar">
+                <div class="card">
+                    <div class="input-group">
+                        <label for="playlistName">Playlist Name</label>
+                        <input type="text" id="playlistName" placeholder="Enter playlist name">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="playlistFile">Upload M3U Playlist</label>
+                        <input type="file" id="playlistFile" accept=".m3u,.m3u8">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="playlistUrl">Or Enter M3U URL</label>
+                        <input type="text" id="playlistUrl" placeholder="https://example.com/playlist.m3u">
+                    </div>
+
+                    <button class="btn btn-primary" id="loadPlaylist">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        Load Playlist
+                    </button>
+
+                    <button class="btn btn-success" id="checkAll">
+                        <i class="fas fa-check-circle"></i>
+                        Check All Channels
+                    </button>
+
+                    <button class="btn btn-warning" id="exportWorking">
+                        <i class="fas fa-file-export"></i>
+                        Export Working Channels
+                    </button>
+                </div>
+
+                <div class="card">
+                    <h3>Categories</h3>
+                    <div class="categories" id="categoriesList"></div>
+                </div>
+            </div>
+
+            <div class="main-content">
+                <div class="card">
+                    <div class="playlist-name" id="currentPlaylist">No Playlist Loaded</div>
+
+                    <div class="filter-container">
+                        <div class="input-group search-box">
+                            <input type="text" id="searchChannel" placeholder="Search channels...">
+                        </div>
+                        <div class="input-group" style="width: 200px;">
+                            <select id="filterStatus">
+                                <option value="all">All Channels</option>
+                                <option value="working">Working Only</option>
+                                <option value="error">Not Working</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="progress-container" id="progressContainer" style="display: none;">
+                        <div class="progress-bar">
+                            <div class="progress" id="progress"></div>
+                        </div>
+                    </div>
+
+                    <div class="stats-container">
+                        <div class="stat-card">
+                            <div class="stat-value" id="totalChannels">0</div>
+                            <div class="stat-label">Total Channels</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="workingChannels">0</div>
+                            <div class="stat-label">Working</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="notWorkingChannels">0</div>
+                            <div class="stat-label">Not Working</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="successRate">0%</div>
+                            <div class="stat-label">Success Rate</div>
+                        </div>
+                    </div>
+
+                    <div class="channels-grid" id="channelsGrid"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="video-player" id="videoPlayer">
+        <button class="close-player" id="closePlayer">×</button>
+        <video id="player" class="video-js vjs-default-skin" controls preload="auto" width="640" height="360">
+            <p class="vjs-no-js">
+                To view this video please enable JavaScript, and consider upgrading to a web browser that supports HTML5 video
+            </p>
+        </video>
+    </div>
+
+    <div class="modal" id="settingsModal">
+        <div class="modal-content">
+            <h2>Channel Settings</h2>
+            <div class="input-group">
+                <label for="channelName">Channel Name</label>
+                <input type="text" id="channelName">
+            </div>
+            <div class="input-group">
+                <label for="channelCategory">Category</label>
+                <input type="text" id="channelCategory">
+            </div>
+            <div class="input-group">
+                <label for="channelUrl">Stream URL</label>
+                <input type="text" id="channelUrl">
+            </div>
+            <button class="btn btn-primary" id="saveChannelSettings">Save Changes</button>
+            <button class="btn btn-warning" id="closeSettings">Cancel</button>
+        </div>
+    </div>
+
+    <script>
+        class AdvancedM3UManager {
+            constructor() {
+                this.channels = [];
+                this.categories = new Set();
+                this.currentCategory = 'all';
+                this.player = null;
+                this.initializeElements();
+                this.setupEventListeners();
+                this.initializeVideoPlayer();
+            }
+
+            initializeElements() {
+                // Main controls
+                this.playlistNameInput = document.getElementById('playlistName');
+                this.fileInput = document.getElementById('playlistFile');
+                this.urlInput = document.getElementById('playlistUrl');
+                this.loadBtn = document.getElementById('loadPlaylist');
+                this.checkAllBtn = document.getElementById('checkAll');
+                this.exportBtn = document.getElementById('exportWorking');
+                
+                // Lists and grids
+                this.categoriesList = document.getElementById('categoriesList');
+                this.channelsGrid = document.getElementById('channelsGrid');
+                
+                // Status elements
+                this.currentPlaylistEl = document.getElementById('currentPlaylist');
+                this.progressContainer = document.getElementById('progressContainer');
+                this.progressBar = document.getElementById('progress');
+                
+                // Stats elements
+                this.totalChannelsEl = document.getElementById('totalChannels');
+                this.workingChannelsEl = document.getElementById('workingChannels');
+                this.notWorkingChannelsEl = document.getElementById('notWorkingChannels');
+                this.successRateEl = document.getElementById('successRate');
+                
+                // Filters
+                this.searchInput = document.getElementById('searchChannel');
+                this.statusFilter = document.getElementById('filterStatus');
+                
+                // Video player
+                this.videoPlayer = document.getElementById('videoPlayer');
+                this.closePlayerBtn = document.getElementById('closePlayer');
+                
+                // Settings modal
+                this.settingsModal = document.getElementById('settingsModal');
+                this.channelNameInput = document.getElementById('channelName');
+                this.channelCategoryInput = document.getElementById('channelCategory');
+                this.channelUrlInput = document.getElementById('channelUrl');
+                this.saveSettingsBtn = document.getElementById('saveChannelSettings');
+                this.closeSettingsBtn = document.getElementById('closeSettings');
+            }
+
+            setupEventListeners() {
+                this.loadBtn.addEventListener('click', () => this.loadPlaylist());
+                this.checkAllBtn.addEventListener('click', () => this.checkAllChannels());
+                this.exportBtn.addEventListener('click', () => this.exportWorkingChannels());
+                this.searchInput.addEventListener('input', () => this.filterChannels());
+                this.statusFilter.addEventListener('change', () => this.filterChannels());
+                this.closePlayerBtn.addEventListener('click', () => this.closeVideoPlayer());
+                this.saveSettingsBtn.addEventListener('click', () => this.saveChannelSettings());
+                this.closeSettingsBtn.addEventListener('click', () => this.closeSettingsModal());
+            }
+
+            initializeVideoPlayer() {
+                this.player = videojs('player', {
+                    controls: true,
+                    autoplay: false,
+                    preload: 'auto'
+                });
+            }
+
+            async loadPlaylist() {
+                try {
+                    let content = '';
+                    const playlistName = this.playlistNameInput.value.trim() || 'Unnamed Playlist';
+
+                    if (this.fileInput.files.length > 0) {
+                        content = await this.readFile(this.fileInput.files[0]);
+                    } else if (this.urlInput.value.trim()) {
+                        content = await this.fetchPlaylist(this.urlInput.value.trim());
+                    } else {
+                        throw new Error('Please provide a playlist file or URL');
+                    }
+
+                    this.parseM3U(content);
+                    this.currentPlaylistEl.textContent = playlistName;
+                    this.updateCategories();
+                    this.displayChannels();
+                    this.updateStats();
+                } catch (error) {
+                    alert('Error loading playlist: ' + error.message);
+                }
+            }
+
+            readFile(file) {
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = e => resolve(e.target.result);
+                    reader.onerror = e => reject(e);
+                    reader.readAsText(file);
+                });
+            }
+
+            async fetchPlaylist(url) {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error('Failed to fetch playlist');
+                return await response.text();
+            }
+
+            parseM3U(content) {
+                this.channels = [];
+                this.categories.clear();
+                const lines = content.split('\n');
+                let currentChannel = null;
+
+                for (const line of lines) {
+                    if (line.startsWith('#EXTINF:')) {
+                        const nameMatch = line.match(/,(.+)$/);
+                        const groupMatch = line.match(/group-title="([^"]+)"/);
+                        
+                        currentChannel = {
+                            name: nameMatch ? nameMatch[1].trim() : 'Unknown Channel',
+                            category: groupMatch ? groupMatch[1] : 'Uncategorized',
+                            url: '',
+                            working: null
+                        };
+                    } else if (line.trim() && !line.startsWith('#') && currentChannel) {
+                        currentChannel.url = line.trim();
+                        this.channels.push(currentChannel);
+                        this.categories.add(currentChannel.category);
+                        currentChannel = null;
+                    }
+                }
+            }
+
+            updateCategories() {
+                this.categoriesList.innerHTML = `
+                    <div class="category-item active" data-category="all">
+                        All Categories <span>${this.channels.length}</span>
+                    </div>
+                `;
+
+                [...this.categories].sort().forEach(category => {
+                    const count = this.channels.filter(ch => ch.category === category).length;
+                    const div = document.createElement('div');
+                    div.className = 'category-item';
+                    div.setAttribute('data-category', category);
+                    div.innerHTML = `${category} <span>${count}</span>`;
+                    div.addEventListener('click', () => this.selectCategory(category));
+                    this.categoriesList.appendChild(div);
+                });
+            }
+
+            selectCategory(category) {
+                this.currentCategory = category;
+                document.querySelectorAll('.category-item').forEach(item => {
+                    item.classList.toggle('active', item.getAttribute('data-category') === category);
+                });
+                this.filterChannels();
+            }
+
+            async checkAllChannels() {
+                this.progressContainer.style.display = 'block';
+                let checked = 0;
+
+                for (const channel of this.channels) {
+                    try {
+                        channel.working = await this.checkChannel(channel.url);
+                    } catch (error) {
+                        channel.working = false;
+                    }
+                    
+                    checked++;
+                    this.progressBar.style.width = (checked / this.channels.length * 100) + '%';
+                    this.updateStats();
+                    this.displayChannels();
+                }
+
+                this.progressContainer.style.display = 'none';
+            }
+
+            async checkChannel(url) {
+                try {
+                    const response = await fetch(url, { 
+                        method: 'HEAD', 
+                        timeout: 5000,
+                        mode: 'no-cors'
+                    });
+                    return true;
+                } catch {
+                    return false;
+                }
+            }
+
+            updateStats() {
+                const total = this.channels.length;
+                const working = this.channels.filter(ch => ch.working === true).length;
+                const notWorking = this.channels.filter(ch => ch.working === false).length;
+                const successRate = total > 0 ? (working / total * 100).toFixed(1) : 0;
+
+                this.totalChannelsEl.textContent = total;
+                this.workingChannelsEl.textContent = working;
+                this.notWorkingChannelsEl.textContent = notWorking;
+                this.successRateEl.textContent = successRate + '%';
+            }
+
+            filterChannels() {
+                const searchTerm = this.searchInput.value.toLowerCase();
+                const statusFilter = this.statusFilter.value;
+                
+                const filteredChannels = this.channels.filter(channel => {
+                    const matchesCategory = this.currentCategory === 'all' || channel.category === this.currentCategory;
+                    const matchesSearch = channel.name.toLowerCase().includes(searchTerm);
+                    const matchesStatus = statusFilter === 'all' || 
+                        (statusFilter === 'working' && channel.working === true) ||
+                        (statusFilter === 'error' && channel.working === false);
+                    
+                    return matchesCategory && matchesSearch && matchesStatus;
+                });
+
+                this.displayChannels(filteredChannels);
+            }
+
+            displayChannels(channels = this.channels) {
+                this.channelsGrid.innerHTML = '';
+
+                channels.forEach(channel => {
+                    const card = document.createElement('div');
+                    card.className = 'channel-card';
+                    
+                    const statusClass = channel.working === true ? 'status-working' : 
+                                    channel.working === false ? 'status-error' : '';
+                    const statusText = channel.working === true ? 'Working' : 
+                                    channel.working === false ? 'Not Working' : 'Not Checked';
+
+                    card.innerHTML = `
+                        <div class="channel-name">${channel.name}</div>
+                        <div class="channel-info">
+                            Category: ${channel.category}<br>
+                            <span class="status-badge ${statusClass}">${statusText}</span>
+                        </div>
+                        <div class="channel-actions">
+                            <button class="btn btn-primary" onclick="app.playChannel('${channel.url}')">
+                                <i class="fas fa-play"></i> Play
+                            </button>
+                            <button class="btn btn-warning" onclick="app.editChannel('${channel.url}')">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                        </div>
+                    `;
+
+                    this.channelsGrid.appendChild(card);
+                });
+            }
+
+            playChannel(url) {
+                this.videoPlayer.classList.add('active');
+                this.player.src({ type: 'application/x-mpegURL', src: url });
+                this.player.play();
+            }
+
+            closeVideoPlayer() {
+                this.videoPlayer.classList.remove('active');
+                this.player.pause();
+                this.player.src('');
+            }
+
+            editChannel(url) {
+                const channel = this.channels.find(ch => ch.url === url);
+                if (!channel) return;
+
+                this.channelNameInput.value = channel.name;
+                this.channelCategoryInput.value = channel.category;
+                this.channelUrlInput.value = channel.url;
+                this.settingsModal.classList.add('active');
+            }
+
+            saveChannelSettings() {
+                const url = this.channelUrlInput.value;
+                const channel = this.channels.find(ch => ch.url === url);
+                if (!channel) return;
+
+                channel.name = this.channelNameInput.value;
+                channel.category = this.channelCategoryInput.value;
+                channel.url = url;
+
+                this.updateCategories();
+                this.displayChannels();
+                this.closeSettingsModal();
+            }
+
+            closeSettingsModal() {
+                this.settingsModal.classList.remove('active');
+            }
+
+            exportWorkingChannels() {
+                const workingChannels = this.channels.filter(ch => ch.working === true);
+                let m3uContent = '#EXTM3U\n';
+                
+                workingChannels.forEach(channel => {
+                    m3uContent += `#EXTINF:-1 group-title="${channel.category}",${channel.name}\n${channel.url}\n`;
+                });
+
+                const blob = new Blob([m3uContent], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'working_channels.m3u';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }
+        }
+
+        // Initialize the application
+        const app = new AdvancedM3UManager();
+    </script>
+</body>
+</html>

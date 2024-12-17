@@ -17,15 +17,15 @@
         },
         {
           "name": "Sync Channels",
-          "url": "https://sultan-projects.netlify.app/projects/sync-channel.html"
+          "url": "pro/project/sync-channel.html"
         },
         {
           "name": "M3U Playlist Manager Pro",
-          "url": "https://projects-media.vercel.app/projects/iptv/M3U%20Playlist%20Manager.html"
+          "url": "pro/project/iptv/m3umanager.html"
         },
         {
           "name": "M3U to Live Streaming",
-          "url": "https://sultanarabi161.github.io/live-server-/projects/m3u-link-checker.html"
+          "url": "pro/project/m3u-link-checker.html"
         }
       ],
       "subfolders": []
@@ -39,7 +39,7 @@
         },
         {
           "name": "Radio Station",
-          "url": "https://sultan-projects.netlify.app/projects/fm_radio.html"
+          "url": "pro/project/fm_radio.html"
         }
       ],
       "subfolders": []
@@ -49,11 +49,11 @@
       "files": [
         {
           "name": "Ask AI",
-          "url": "https://sultanarabi161.github.io/live-server-/projects/ask-ai.html"
+          "url": "pro/projects/ask-ai.html"
         },
         {
           "name": "Cracker AI",
-          "url": "https://sultan-projects.netlify.app/projects/cracker-ai.html"
+          "url": "pro/project/cracker-ai.html"
         }
       ],
       "subfolders": []
@@ -64,27 +64,27 @@
       "files": [
         {
           "name": "Crackpad",
-          "url": "https://sultanarabi161.github.io/live-server-/projects/crackpad.html"
+          "url": "pro/project/crackpad.html"
         },
         {
           "name": "Notepad",
-          "url": "https://sultan-projects.netlify.app/projects/sync-channel.html"
+          "url": "pro/project/sync-channel.html"
         },
         {
           "name": "Orbit pad",
-          "url": "https://projects-media.vercel.app/projects/tools/Orbit_pad.html"
+          "url": "pro/project/Orbit_pad.html"
         },    
         {
           "name": "Simple pad",
-          "url": "https://projects-media.vercel.app/projects/tools/simple_note.html"
+          "url": "pro/project/simple_note.html"
         },
         {
           "name": "Typing Test",
-          "url": "https://projects-media.vercel.app/projects/tools/Typing_Speed_Test.html"
+          "url": "pro/project/tools/Typing_Speed_Test.html"
         }, 
         {
           "name": "Live Code",
-          "url": "https://sultanarabi161.github.io/live-server-/projects/code-editor.html"
+          "url": "pro/project/code-editor.html"
         },
         {
           "name": "Live Server",
@@ -99,7 +99,7 @@
       "files": [
         {
           "name": "Social Media",
-          "url": "https://sultan-projects.netlify.app/social-media.html"
+          "url": "p/project/social-media.html"
         },
         {
           "name": "Digital Card",

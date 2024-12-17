@@ -5,27 +5,27 @@
       "files": [
         {
           "name": "Simple Player",
-          "url": "pro/project/TV_Player.html"
+          "url": "pro/main/projects/TV_Player.html"
         },
         {
           "name": "Playlists Maker",
-          "url": "pro/project/M3U_Playlist%20_Maker.html"
+          "url": "pro/main/projects/M3U_Playlist%20_Maker.html"
         },
         {
           "name": "M3U Playlist Checker",
-          "url": "pro/project/M3U_Playlist_Checker.html"
+          "url": "pro/main/projects/M3U_Playlist_Checker.html"
         },
         {
           "name": "Sync Channels",
-          "url": "pro/project/sync-channel.html"
+          "url": "pro/main/projects/sync-channel.html"
         },
         {
           "name": "M3U Playlist Manager Pro",
-          "url": "pro/project/iptv/m3umanager.html"
+          "url": "pro/main/projects/iptv/m3umanager.html"
         },
         {
           "name": "M3U to Live Streaming",
-          "url": "pro/project/m3u-link-checker.html"
+          "url": "pro/main/projects/m3u-link-checker.html"
         }
       ],
       "subfolders": []
@@ -35,11 +35,11 @@
       "files": [
         {
           "name": "Video Player",
-          "url": "pro/project/professional_video_player_0.2.html"
+          "url": "pro/main/projects/professional_video_player_0.2.html"
         },
         {
           "name": "Radio Station",
-          "url": "pro/project/fm_radio.html"
+          "url": "pro/main/projects/fm_radio.html"
         }
       ],
       "subfolders": []
@@ -49,11 +49,11 @@
       "files": [
         {
           "name": "Ask AI",
-          "url": "pro/projects/ask-ai.html"
+          "url": "pro/main/projectss/ask-ai.html"
         },
         {
           "name": "Cracker AI",
-          "url": "pro/project/cracker-ai.html"
+          "url": "pro/main/projects/cracker-ai.html"
         }
       ],
       "subfolders": []
@@ -64,27 +64,27 @@
       "files": [
         {
           "name": "Crackpad",
-          "url": "pro/project/crackpad.html"
+          "url": "pro/main/projects/crackpad.html"
         },
         {
           "name": "Notepad",
-          "url": "pro/project/sync-channel.html"
+          "url": "pro/main/projects/sync-channel.html"
         },
         {
           "name": "Orbit pad",
-          "url": "pro/project/Orbit_pad.html"
+          "url": "pro/main/projects/Orbit_pad.html"
         },    
         {
           "name": "Simple pad",
-          "url": "pro/project/simple_note.html"
+          "url": "pro/main/projects/simple_note.html"
         },
         {
           "name": "Typing Test",
-          "url": "pro/project/tools/Typing_Speed_Test.html"
+          "url": "pro/main/projects/tools/Typing_Speed_Test.html"
         }, 
         {
           "name": "Live Code",
-          "url": "pro/project/code-editor.html"
+          "url": "pro/main/projects/code-editor.html"
         },
         {
           "name": "Live Server",

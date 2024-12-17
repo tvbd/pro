@@ -273,7 +273,7 @@
 
         async function loadBookmarks() {
             try {
-                const response = await fetch('//raw.githack.com/tvbd/pro/main/file.json');
+                const response = await fetch('https://raw.githack.com/tvbd/pro/main/file.json');
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }

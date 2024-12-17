@@ -1,31 +1,230 @@
-[{"link2":"https://iptv-org.github.io/iptv/categories/animation.m3u","img":"","genre":"All","lang":"Live","name":"animation","author":"TVBD"}
-,{"link2":"https://iptv-org.github.io/iptv/categories/auto.m3u","img":"","genre":"All","lang":"Live","name":"auto","author":"TVBD"}
-,{"link2":"https://iptv-org.github.io/iptv/categories/business.m3u","img":"","genre":"All","lang":"Live","name":"business","author":"TVBD"}
-,{"link2":"https://iptv-org.github.io/iptv/categories/classic.m3u","img":"","genre":"All","lang":"Live","name":"classic","author":"TVBD"}
-,{"link2":"https://iptv-org.github.io/iptv/categories/comedy.m3u","img":"","genre":"All","lang":"Live","name":"comedy","author":"TVBD"}
-,{"link2":"https://iptv-org.github.io/iptv/categories/cooking.m3u","img":"","genre":"All","lang":"Live","name":"cooking.","author":"TVBD"}
-,{"link2":"https://iptv-org.github.io/iptv/categories/culture.m3u","img":"","genre":"All","lang":"Live","name":"culture","author":"TVBD"}
-,{"link2":"https://iptv-org.github.io/iptv/categories/documentary.m3u","img":"","genre":"All","lang":"Live","name":"documentary","author":"TVBD"}
-,{"link2":"https://iptv-org.github.io/iptv/categories/education.m3u","img":"","genre":"All","lang":"Live","name":"","author":"TVBD"}
-,{"link2":"https://iptv-org.github.io/iptv/categories/entertainment.m3u","img":"","genre":"All","lang":"Live","name":"entertainment.m3u","author":"TVBD"}
-,{"link2":"https://iptv-org.github.io/iptv/categories/family.m3u","img":"","genre":"All","lang":"Live","name":"family","author":"TVBD"}
-,{"link2":"https://iptv-org.github.io/iptv/categories/general.m3u","img":"","genre":"All","lang":"Live","name":"general","author":"TVBD"}
-,{"link2":"https://iptv-org.github.io/iptv/categories/kids.m3u","img":"","genre":"All","lang":"Live","name":"kids","author":"TVBD"}
-,{"link2":"https://iptv-org.github.io/iptv/categories/legislative.m3u","img":"","genre":"All","lang":"Live","name":"legislative","author":"TVBD"}
-,{"link2":"https://iptv-org.github.io/iptv/categories/lifestyle.m3u","img":"","genre":"All","lang":"Live","name":"lifestyle","author":"TVBD"}
-,{"link2":"https://iptv-org.github.io/iptv/categories/movies.m3u","img":"","genre":"All","lang":"Live","name":"movies","author":"TVBD"}
-,{"link2":"https://iptv-org.github.io/iptv/categories/music.m3u","img":"","genre":"All","lang":"Live","name":"music","author":"TVBD"}
-,{"link2":"https://iptv-org.github.io/iptv/categories/news.m3u","img":"","genre":"All","lang":"Live","name":"news","author":"TVBD"}
-,{"link2":"https://iptv-org.github.io/iptv/categories/outdoor.m3u","img":"","genre":"All","lang":"Live","name":"outdoor","author":"TVBD"}
-,{"link2":"https://iptv-org.github.io/iptv/categories/relax.m3u","img":"","genre":"All","lang":"Live","name":"relax","author":"TVBD"}
-,{"link2":"https://iptv-org.github.io/iptv/categories/religious.m3u","img":"","genre":"All","lang":"Live","name":"religious","author":"TVBD"}
-,{"link2":"https://iptv-org.github.io/iptv/categories/science.m3u","img":"","genre":"All","lang":"Live","name":"science","author":"TVBD"}
-,{"link2":"https://iptv-org.github.io/iptv/categories/series.m3u","img":"","genre":"All","lang":"Live","name":"series","author":"TVBD"}
-,{"link2":"https://iptv-org.github.io/iptv/categories/shop.m3u","img":"","genre":"All","lang":"Live","name":"shop","author":"TVBD"}
-,{"link2":"https://iptv-org.github.io/iptv/categories/sports.m3u","img":"","genre":"All","lang":"Live","name":"sports","author":"TVBD"}
-,{"link2":"https://iptv-org.github.io/iptv/categories/travel.m3u","img":"","genre":"All","lang":"Live","name":"travel","author":"TVBD"}
-,{"link2":"https://iptv-org.github.io/iptv/categories/weather.m3u","img":"","genre":"All","lang":"Live","name":"weather","author":"TVBD"}
-,{"link2":"https://iptv-org.github.io/iptv/categories/xxx.m3u","img":"","genre":"All","lang":"Live","name":"xxx","author":"TVBD"}
-,{"link2":"https://iptv-org.github.io/iptv/categories/undefined.m3u","img":"","genre":"All","lang":"Live","name":"Other","author":"TVBD"}
+{
+  "folders": [
+    {
+      "name": "Streaming",
+      "files": [
+        {
+          "name": "Simple Player",
+          "url": "https://sultanarabi161.github.io/live-server/projects/TV_Player.html"
+        },
+        {
+          "name": "Playlists Maker",
+          "url": "https://sultanarabi161.github.io/live-server/projects/M3U_Playlist%20_Maker.html"
+        },
+        {
+          "name": "M3U Playlist Checker",
+          "url": "https://sultanarabi161.github.io/live-server/projects/M3U_Playlist_Checker.html"
+        },
+        {
+          "name": "Sync Channels",
+          "url": "https://sultan-projects.netlify.app/projects/sync-channel.html"
+        },
+        {
+          "name": "M3U Playlist Manager Pro",
+          "url": "https://projects-media.vercel.app/projects/iptv/M3U%20Playlist%20Manager.html"
+        },
+        {
+          "name": "M3U to Live Streaming",
+          "url": "https://sultanarabi161.github.io/live-server-/projects/m3u-link-checker.html"
+        }
+      ],
+      "subfolders": []
+    },
+    {
+      "name": "Media Players",
+      "files": [
+        {
+          "name": "Video Player",
+          "url": "https://sultanarabi161.github.io/live-server/projects/professional_video_player_0.2.html"
+        },
+        {
+          "name": "Radio Station",
+          "url": "https://sultan-projects.netlify.app/projects/fm_radio.html"
+        }
+      ],
+      "subfolders": []
+    },
+    {
+      "name": "AI Tools",
+      "files": [
+        {
+          "name": "Ask AI",
+          "url": "https://sultanarabi161.github.io/live-server-/projects/ask-ai.html"
+        },
+        {
+          "name": "Cracker AI",
+          "url": "https://sultan-projects.netlify.app/projects/cracker-ai.html"
+        }
+      ],
+      "subfolders": []
+    },
+    {
+      "name": "Productivity Tools",  
 
-]
+      "files": [
+        {
+          "name": "Crackpad",
+          "url": "https://sultanarabi161.github.io/live-server-/projects/crackpad.html"
+        },
+        {
+          "name": "Notepad",
+          "url": "https://sultan-projects.netlify.app/projects/sync-channel.html"
+        },
+        {
+          "name": "Orbit pad",
+          "url": "https://projects-media.vercel.app/projects/tools/Orbit_pad.html"
+        },    
+        {
+          "name": "Simple pad",
+          "url": "https://projects-media.vercel.app/projects/tools/simple_note.html"
+        },
+        {
+          "name": "Typing Test",
+          "url": "https://projects-media.vercel.app/projects/tools/Typing_Speed_Test.html"
+        }, 
+        {
+          "name": "Live Code",
+          "url": "https://sultanarabi161.github.io/live-server-/projects/code-editor.html"
+        },
+        {
+          "name": "Live Server",
+          "url": "https://cracker2161.github.io/github-live-server/"
+        }
+        
+      ],
+      "subfolders": []
+    },
+    {
+      "name": "Social Media",
+      "files": [
+        {
+          "name": "Social Media",
+          "url": "https://sultan-projects.netlify.app/social-media.html"
+        },
+        {
+          "name": "Digital Card",
+          "url": "https://sultanarabi.netlify.app/"
+        }
+      ],
+      "subfolders": []
+    },
+    {
+      "name": "Web Projects",
+      "files": [
+        {
+          "name": "Portfolio",
+          "url": "https://sultanarabi-portfolio.netlify.app/"
+        }  
+      ],
+      "subfolders": []
+    },
+    {
+      "name": "Blogs",
+      "files": [
+        {
+          "name": "Blog Post 1",
+          "url": "https://sultanarabi.news.blog"
+        },
+        {
+          "name": "Blog Post 2",
+          "url": "https://quran.com"
+        }
+      ],
+      "subfolders": [
+        {
+          "name": "Sub-Blogs",
+          "files": [
+            {
+              "name": "সুলতান আরাবি",
+              "url": "https://sultanarabi.news.blog"
+            },
+            {
+              "name": "কুরআন",
+              "url": "https://quran.com"
+            }
+          ],
+          "subfolders": []
+        }
+      ]
+    },
+    {
+      "name": "File Management",
+      "files": [
+        {
+          "name": "QR Code",
+          "url": "https://example.com/qrcode"
+        },
+        {
+          "name": "Project Files",
+          "url": "https://example.com/project"
+        },
+        {
+          "name": "Files Transfer",
+          "url": "https://mega.nz/filerequest/o_tYuS3sUII"
+        }
+      ],
+      "subfolders": []
+    },
+    {
+      "name": "Reports & Documentation",
+      "files": [
+        {
+          "name": "Report on AI",
+          "url": "https://example.com/reports"
+        },
+        {
+          "name": "Summary",
+          "url": "https://example.com/summary"
+        }
+      ],
+      "subfolders": []
+    },
+    {
+      "name": "IPTV Channels",
+      "files": [
+        {
+          "name": "Stream Live TV",
+          "url": "https://ibn-stream.netlify.app/"
+        },
+        {
+          "name": "Crack TV",
+          "url": "https://projects-media.vercel.app/projects/iptv/crack_tv.html"
+        },
+        {
+          "name": "IPTV v-0.6",
+          "url": "https://projects-media.vercel.app/projects/iptv/index_v1.6.html"
+        },
+        {
+          "name": "Orbit - Old",
+          "url": "https://projects-media.vercel.app/projects/iptv/stream_orbit/index.html"
+        },
+        {
+          "name": "Channel 5",
+          "url": "https://example.com/channel5"
+        },
+        {
+          "name": "Channel 6",
+          "url": "https://example.com/channel6"
+        },
+        {
+          "name": "Channel 7",
+          "url": "https://example.com/channel7"
+        },
+        {
+          "name": "Channel 8",
+          "url": "https://example.com/channel8"
+        },
+        {
+          "name": "Channel 9",
+          "url": "https://example.com/channel9"
+        },
+        {
+          "name": "Channel 10",
+          "url": "https://example.com/channel10"
+        }
+      ],
+      "subfolders": []
+    }
+  ]
+}
+
